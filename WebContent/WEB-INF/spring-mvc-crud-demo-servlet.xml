@@ -19,6 +19,9 @@
 
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven/>
+	
+	<!-- Add support for reading resources files -->
+	<mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"></mvc:resources>
 
 	<!-- Define Spring MVC view resolver -->
 	<bean
