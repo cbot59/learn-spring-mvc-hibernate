@@ -8,19 +8,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import it.aldi.web.springhibernate.dao.CustomerDAO;
 import it.aldi.web.springhibernate.entity.Customer;
+import it.aldi.web.springhibernate.service.CustomerService;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
 
-  @Autowired private CustomerDAO customerDao;
+  @Autowired private CustomerService customerService;
 
   @GetMapping("/list")
   public String listCustomer(Model model) {
 
-    List<Customer> customers = customerDao.getCustomers();
+    List<Customer> customers = customerService.getCustomers();
 
     model.addAttribute("customers", customers);
 
