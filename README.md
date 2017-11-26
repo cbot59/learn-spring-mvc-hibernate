@@ -11,4 +11,5 @@ What's inside
 4. Delete existing customer in database
 
 Application Infrastrutcure
+
 View (JSP) -> Controller -> Service -> DAO(Hibernate) -> Database(MySQL)
