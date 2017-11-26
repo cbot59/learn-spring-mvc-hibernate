@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.aldi.web.springhibernate.entity.Customer;
 import it.aldi.web.springhibernate.service.CustomerService;
@@ -29,8 +30,8 @@ public class CustomerController {
     return "list-customer";
   }
 
-  @GetMapping("/showAddCustomerForm")
-  public String showAddCustomerForm(Model model) {
+  @GetMapping("/showFormForAddCustomer")
+  public String showFormForAddCustomer(Model model) {
 
     Customer customer = new Customer();
 
@@ -44,5 +45,15 @@ public class CustomerController {
 
     customerService.saveCustomer(customer);
     return "redirect:/customer/list";
+  }
+
+  @GetMapping("/showFormForUpdateCustomer")
+  public String showFormForUpdateCustomer(@RequestParam("customerId") int customerId, Model model) {
+
+    Customer customer = customerService.getCustomerById(customerId);
+
+    model.addAttribute("customer", customer);
+
+    return "customer-form";
   }
 }
