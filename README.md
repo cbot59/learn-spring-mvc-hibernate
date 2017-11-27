@@ -1,6 +1,8 @@
 # learn-spring-mvc-hibernate
 Learn to Build Java Web Application using Spring MVC and Hibernate
 
+Application name: Customer Relationship Manager (CRM)
+
 What's inside
 1. List all customers from database
 
