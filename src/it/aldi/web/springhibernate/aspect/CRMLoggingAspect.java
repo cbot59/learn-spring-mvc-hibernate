@@ -30,11 +30,11 @@ public class CRMLoggingAspect {
   @Pointcut("forControllerPackage() || forServicePackage() ||  forDaoPackage()")
   private void forAppFlow() {}
 
-  @Before("forAppFlow")
+  @Before("forAppFlow()")
   public void before(JoinPoint joinPoint) {
 
     String method = joinPoint.getSignature().toShortString();
-    LOG.info("===> Calling @Before from method" + method);
+    LOG.info("===> Calling @Before from method " + method);
 
     Object[] args = joinPoint.getArgs();
 
@@ -43,7 +43,7 @@ public class CRMLoggingAspect {
     }
   }
 
-  @AfterReturning(pointcut = "forAppFlow", returning = "result")
+  @AfterReturning(pointcut = "forAppFlow()", returning = "result")
   public void afterReturning(JoinPoint joinPoint, Object result) {
 
     String method = joinPoint.getSignature().toShortString();
