@@ -10,6 +10,8 @@ What's inside
 
 4. Delete existing customer in database
 
+5. Logging Aspect for each layer
+
 Application Infrastrutcure
 
 View (JSP) -> Controller -> Service -> DAO(Hibernate) -> Database(MySQL)
