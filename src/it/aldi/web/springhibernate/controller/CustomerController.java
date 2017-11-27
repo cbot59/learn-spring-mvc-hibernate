@@ -44,6 +44,7 @@ public class CustomerController {
   public String saveCustomer(@ModelAttribute("customer") Customer customer) {
 
     customerService.saveCustomer(customer);
+
     return "redirect:/customer/list";
   }
 
@@ -63,5 +64,18 @@ public class CustomerController {
     customerService.deleteCustomerById(customerId);
 
     return "redirect:/customer/list";
+  }
+
+  @PostMapping("/findCustomer")
+  public String searchCustomer(
+      @RequestParam("searchCustomerName") String customerName, Model model) {
+
+    customerName = customerName.trim();
+
+    List<Customer> customers = customerService.findCustomerByName(customerName);
+
+    model.addAttribute("customers", customers);
+
+    return "list-customer";
   }
 }

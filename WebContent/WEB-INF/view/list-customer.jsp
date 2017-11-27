@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html">
 <html>
 <head>
@@ -22,6 +23,13 @@
         <input type="button" value="Add Customer"
           onclick="window.location.href='showFormForAddCustomer'; return false;"
           class="add-button" />
+
+        <form:form action="findCustomer" method="POST" name="searchForm" onsubmit="return isEmpty()">
+                Search customer: <input type="text"
+            name="searchCustomerName" required />
+
+          <input type="submit" value="Search" class="add-button" />
+        </form:form>
 
         <table>
           <tr>
@@ -58,4 +66,16 @@
   </div>
 
 </body>
+
+<script type="text/javascript">
+	function isEmpty() {
+		var name = document.forms["searchForm"]["searchCustomerName"].value;
+		name = name.trim();
+		if (name == null || name == "") {
+			alert("Please input a name");
+			return false;
+		}
+		return true;
+	}
+</script>
 </html>
